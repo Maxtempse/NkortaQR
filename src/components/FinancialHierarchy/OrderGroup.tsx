@@ -17,17 +17,17 @@ export const OrderGroup: React.FC<OrderGroupProps> = ({
   const [isExpanded, setIsExpanded] = useState(true)
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+    <div className="bg-blue-50 p-3 rounded-lg shadow-sm border-2 border-blue-200 mb-4">
       <CollapsibleHeader
         isExpanded={isExpanded}
         toggle={() => setIsExpanded(!isExpanded)}
-        className="hover:bg-gray-50"
+        className="hover:bg-blue-100 rounded"
       >
         <div className="flex items-center gap-3 flex-grow min-w-0">
-          <span className="flex items-center justify-center w-6 h-6 bg-indigo-600 text-white rounded-full text-xs font-bold flex-shrink-0">
+          <span className="flex items-center justify-center w-7 h-7 bg-blue-600 text-white rounded-full text-sm font-bold flex-shrink-0">
             {order.orderNumber || '#'}
           </span>
-          <h2 className="text-base font-bold text-gray-800 truncate">
+          <h2 className="text-base font-bold text-gray-900 truncate">
             {order.orderName || 'Заказ без названия'}
           </h2>
         </div>
@@ -39,7 +39,7 @@ export const OrderGroup: React.FC<OrderGroupProps> = ({
       </CollapsibleHeader>
 
       {isExpanded && (
-        <div className="pt-3 space-y-3">
+        <div className="mt-3 ml-6 space-y-2">
           {order.workGroups.map((wg) => (
             <WorkGroup
               key={wg.id}

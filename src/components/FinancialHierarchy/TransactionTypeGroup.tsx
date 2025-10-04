@@ -22,18 +22,18 @@ export const TransactionTypeGroup: React.FC<TransactionTypeGroupProps> = ({
 
   const isIncome = group.type === 'income'
   const headerColor = isIncome
-    ? 'bg-green-50 hover:bg-green-100'
-    : 'bg-red-50 hover:bg-red-100'
+    ? 'bg-green-50 hover:bg-green-100 border-green-300'
+    : 'bg-red-50 hover:bg-red-100 border-red-300'
   const textColor = isIncome ? 'text-green-800' : 'text-red-800'
 
   return (
-    <div className="ml-4">
+    <div className={`border rounded-md ${isIncome ? 'border-green-300' : 'border-red-300'}`}>
       <CollapsibleHeader
         isExpanded={isExpanded}
         toggle={() => setIsExpanded(!isExpanded)}
-        className={headerColor}
+        className={`${headerColor} rounded-md`}
       >
-        <h4 className={`text-sm font-semibold ${textColor}`}>
+        <h4 className={`text-sm font-semibold ${textColor} pl-2`}>
           {isIncome ? 'Доходы' : 'Расходы'}
         </h4>
         <span className={`text-sm font-bold ml-auto ${textColor}`}>
@@ -42,7 +42,7 @@ export const TransactionTypeGroup: React.FC<TransactionTypeGroupProps> = ({
       </CollapsibleHeader>
 
       {isExpanded && (
-        <div className="pt-2 pl-4 border-l-2 border-gray-200 ml-2 space-y-2">
+        <div className="py-2 ml-6 space-y-2">
           {group.items.map((item) => (
             <ItemCard
               key={item.id}
