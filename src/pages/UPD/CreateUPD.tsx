@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, FileText, Calendar } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
-import { TextInput } from '../../components/ui/TextInput';
 import { Alert } from '../../components/ui/Alert';
 import {
   getAvailableReceptionItems,
@@ -393,10 +392,12 @@ export default function CreateUPD() {
                     <FileText className="inline w-4 h-4 mr-1" />
                     Номер УПД *
                   </label>
-                  <TextInput
+                  <input
+                    type="text"
                     value={documentNumber}
                     onChange={(e) => setDocumentNumber(e.target.value)}
                     placeholder="Например: 00БП-000001"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />
                 </div>
